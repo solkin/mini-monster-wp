@@ -4,12 +4,12 @@ Mini-Monster
 Client for Mini-Monster electical switcher
 Application for Windows Phone 8.x
 
-![image](https://raw.github.com/solkin/mini-monster-wp/master/Screenshots/1.png "Main window")
-![image](https://raw.github.com/solkin/mini-monster-wp/master/Screenshots/0.png "Live tiles for selected ports") 
-![image](https://raw.github.com/solkin/mini-monster-wp/master/Screenshots/2.png "Temperature info") 
-![image](https://raw.github.com/solkin/mini-monster-wp/master/Screenshots/4.png "Port renaming (and saving on the module)") 
-![image](https://raw.github.com/solkin/mini-monster-wp/master/Screenshots/3.png "PWM") 
-![image](https://raw.github.com/solkin/mini-monster-wp/master/Screenshots/5.png "Modules page")
-![image](https://raw.github.com/solkin/mini-monster-wp/master/Screenshots/6.png "Renaming module ID")
-![image](https://raw.github.com/solkin/mini-monster-wp/master/Screenshots/7.png "Adding new module")
-![image](https://raw.github.com/solkin/mini-monster-wp/master/Screenshots/8.png "Switching state from live tile")
+<img src="./Screenshots/1.png" width="320px" alt="Main window"/>
+<img src="./Screenshots/0.png" width="320px" alt="Live tiles for selected ports"/>
+<img src="./Screenshots/2.png" width="320px" alt="Temperature info"/>
+<img src="./Screenshots/4.png" width="320px" alt="Port renaming (and saving on the module)"/>
+<img src="./Screenshots/3.png" width="320px" alt="PWM"/>
+<img src="./Screenshots/5.png" width="320px" alt="Modules page"/>
+<img src="./Screenshots/6.png" width="320px" alt="Renaming module ID"/>
+<img src="./Screenshots/7.png" width="320px" alt="Adding new module"/>
+<img src="./Screenshots/8.png" width="320px" alt="Switching state from live tile"/>
