@@ -4,12 +4,12 @@ Mini-Monster
 Client for Mini-Monster electical switcher
 Application for Windows Phone 8.x
 
-<img src="./Screenshots/1.png" width="320px" alt="Main window"/>
-<img src="./Screenshots/0.png" width="320px" alt="Live tiles for selected ports"/>
-<img src="./Screenshots/2.png" width="320px" alt="Temperature info"/>
-<img src="./Screenshots/4.png" width="320px" alt="Port renaming (and saving on the module)"/>
-<img src="./Screenshots/3.png" width="320px" alt="PWM"/>
-<img src="./Screenshots/5.png" width="320px" alt="Modules page"/>
-<img src="./Screenshots/6.png" width="320px" alt="Renaming module ID"/>
-<img src="./Screenshots/7.png" width="320px" alt="Adding new module"/>
-<img src="./Screenshots/8.png" width="320px" alt="Switching state from live tile"/>
+<img src="./Screenshots/1.png" width="300px" alt="Main window"/> 
+<img src="./Screenshots/0.png" width="300px" alt="Live tiles for selected ports"/> 
+<img src="./Screenshots/2.png" width="300px" alt="Temperature info"/> 
+<img src="./Screenshots/4.png" width="300px" alt="Port renaming (and saving on the module)"/> 
+<img src="./Screenshots/3.png" width="300px" alt="PWM"/> 
+<img src="./Screenshots/5.png" width="300px" alt="Modules page"/> 
+<img src="./Screenshots/6.png" width="300px" alt="Renaming module ID"/> 
+<img src="./Screenshots/7.png" width="300px" alt="Adding new module"/> 
+<img src="./Screenshots/8.png" width="300px" alt="Switching state from live tile"/>
