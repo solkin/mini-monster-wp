@@ -1,0 +1,138 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="mini_monster.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    xmlns:tk="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    tk:TiltEffect.IsTiltEnabled="True">
+
+    <tk:TransitionService.NavigationInTransition>
+        <tk:NavigationInTransition>
+            <tk:NavigationInTransition.Backward>
+                <tk:TurnstileTransition Mode="BackwardIn" />
+            </tk:NavigationInTransition.Backward>
+            <tk:NavigationInTransition.Forward>
+                <tk:TurnstileTransition Mode="ForwardIn" />
+            </tk:NavigationInTransition.Forward>
+        </tk:NavigationInTransition>
+    </tk:TransitionService.NavigationInTransition>
+    <tk:TransitionService.NavigationOutTransition>
+        <tk:NavigationOutTransition>
+            <tk:NavigationOutTransition.Backward>
+                <tk:TurnstileTransition Mode="BackwardOut" />
+            </tk:NavigationOutTransition.Backward>
+            <tk:NavigationOutTransition.Forward>
+                <tk:TurnstileTransition Mode="ForwardOut" />
+            </tk:NavigationOutTransition.Forward>
+        </tk:NavigationOutTransition>
+    </tk:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot представляет корневую сетку, где размещается все содержимое страницы-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ПРИМЕЧАНИЕ О ЛОКАЛИЗАЦИИ:
+            Чтобы локализовать отображаемые строки, скопируйте их значения в соответствующим образом названные
+            ключи в файле ресурсов нейтрального языка приложения (AppResources.resx), а затем
+            замените жестко заданное текстовое значение между кавычками атрибутов
+            на выражение привязки, указывающее на имя соответствующей строки.
+
+            Пример:
+
+                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+
+            Данная привязка указывает на строковый ресурс шаблона с именем "ApplicationTitle".
+
+            Добавление поддерживаемых языков на вкладку "Свойства проекта" создает
+            новый RESX-файл для каждого языка, в котором могут храниться переведенные значения
+            строк пользовательского интерфейса. Привязка в этих примерах вызывает отрисовку
+            значений атрибутов из RESX-файла, соответствующего
+            CurrentUICulture приложения во время выполнения.
+         -->
+
+        <!--TitlePanel содержит имя приложения и заголовок страницы-->
+        <!--StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="MINI MONSTER" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="Порты" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel-->
+
+        <!--Grid x:Name="WaitPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel x:Name="stackPanel" Orientation="Vertical" 
+                        VerticalAlignment="Center" Visibility="Visible">
+                <ProgressBar Name="progressBar" IsIndeterminate="True"/>
+                <TextBlock HorizontalAlignment="Center" Text="Загрузка..." />
+            </StackPanel>
+        </Grid-->
+
+        <phone:Pivot x:Name="MonstersPivot" Title="MINI-MONSTER" Grid.Row="1" SelectionChanged="MonstersPivot_SelectionChanged">
+            <phone:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding MonsterName}" FontSize="45"/>
+                </DataTemplate>
+            </phone:Pivot.HeaderTemplate>
+            <phone:Pivot.ItemTemplate>
+                <DataTemplate>
+                    <ListBox x:Name="ContentPanel" Margin="12,0,12,0" ItemsSource="{Binding PortsList}">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="Margin" Value="0,0,0,0"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Background="Transparent">
+                                    <tk:ContextMenuService.ContextMenu>
+                                        <tk:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
+                                            <tk:MenuItem Header="на рабочий стол" Click="CreateTile_Click" Tag="{Binding PortIndex}"/>
+                                            <tk:MenuItem Header="переименовать" Click="RenamePort_Click" Tag="{Binding PortIndex}"/>
+                                        </tk:ContextMenu>
+                                    </tk:ContextMenuService.ContextMenu>
+                                    <tk:ToggleSwitch Header="{Binding PortName}" IsChecked="{Binding PortState}"
+                                                Click="ToggleSwitch_Click" Tag="{Binding PortIndex}">
+                                        <tk:ToggleSwitch.HeaderTemplate>
+                                            <DataTemplate>
+                                                <TextBlock FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                                    Foreground="{StaticResource PhoneSubtleBrush}"
+                                                    TextWrapping="Wrap"
+                                                    Text="{Binding}"/>
+                                            </DataTemplate>
+                                        </tk:ToggleSwitch.HeaderTemplate>
+                                    </tk:ToggleSwitch>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DataTemplate>
+            </phone:Pivot.ItemTemplate>
+        </phone:Pivot>
+    </Grid>
+
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Default" IsVisible="True" IsMenuEnabled="True" Opacity="1.0">
+            <shell:ApplicationBarIconButton Click="Refresh_Click" IconUri="/Assets/AppBar/refresh.png" Text="Обновить"/>
+            <shell:ApplicationBarIconButton Click="Temperature_Click" IconUri="/Assets/AppBar/temperature.png" Text="Температура"/>
+            <shell:ApplicationBarIconButton Click="Pwm_Click" IconUri="/Assets/AppBar/pwm.png" Text="ШИМ"/>
+            <shell:ApplicationBarIconButton Click="Settings_Click" IconUri="/Assets/AppBar/settings.png" Text="Настройки"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Click="MonsterPromo_Click" Text="О модуле"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
